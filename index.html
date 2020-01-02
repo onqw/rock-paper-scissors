@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock, Paper, Scissors!</title>
+    </head>
+    <body>
+        <script>
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+            
+            let computerPlay = function() {
+                let selectChoice = getRandomInt(3);
+                if (selectChoice == 0) {
+                    return "Rock";
+                } else if (selectChoice == 1) {
+                    return "Paper";
+                } else if (selectChoice == 2) {
+                    return "Scissors";
+                }
+            }
+            let userChoice;
+            let round = function(playerSelection, computerSelection) {
+                userChoice = userChoice.toLowerCase();
+                userChoice = userChoice.charAt(0).toUpperCase() + userChoice.slice(1);
+                let computerChoice = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);
+                computerSelection = computerSelection.toLowerCase();
+                playerSelection = userChoice.toLowerCase();
+                if (playerSelection == computerSelection) {
+                    return "It's a Draw!";
+                } else if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper") {
+                    return "You win! " + userChoice + " beats " + computerChoice; 
+                } else {
+                    return "You Lose! " + computerChoice + " beats " + userChoice;
+                }
+            }
+            function game() {
+
+                for (i = 0; i < 5; i++) {
+                    userChoice = prompt("Rock, Paper, or Scissors?")
+                    // round(userChoice, computerPlay())
+
+                    console.log(round(userChoice, computerPlay()));
+                }
+            }
+            game();
+        </script>
+    </body>
+</html>
